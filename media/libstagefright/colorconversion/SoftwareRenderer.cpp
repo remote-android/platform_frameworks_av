@@ -125,6 +125,7 @@ void SoftwareRenderer::resetFormatIfChanged(
     // hardware has YUV12 and RGBA8888 support, so convert known formats
     {
         switch (mColorFormat) {
+#if 0 // mesa still not support YV12
             case OMX_COLOR_FormatYUV420Planar:
             case OMX_COLOR_FormatYUV420SemiPlanar:
             case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
@@ -134,6 +135,7 @@ void SoftwareRenderer::resetFormatIfChanged(
                 bufHeight = (mCropHeight + 1) & ~1;
                 break;
             }
+#endif
             case OMX_COLOR_Format24bitRGB888:
             {
                 halFormat = HAL_PIXEL_FORMAT_RGB_888;
@@ -159,7 +161,7 @@ void SoftwareRenderer::resetFormatIfChanged(
                     // use render engine to convert it to RGB if needed.
                     halFormat = HAL_PIXEL_FORMAT_RGBA_1010102;
                 } else {
-                    halFormat = HAL_PIXEL_FORMAT_YV12;
+//                    halFormat = HAL_PIXEL_FORMAT_YV12;
                 }
                 bufWidth = (mCropWidth + 1) & ~1;
                 bufHeight = (mCropHeight + 1) & ~1;
