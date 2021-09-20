@@ -130,6 +130,7 @@ void SoftwareRenderer::resetFormatIfChanged(
     // hardware has YUV12 and RGBA8888 support, so convert known formats
     {
         switch (mColorFormat) {
+#if 0 // HACKED
             case OMX_COLOR_FormatYUV420Planar:
             case OMX_COLOR_FormatYUV420SemiPlanar:
             case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
@@ -139,6 +140,7 @@ void SoftwareRenderer::resetFormatIfChanged(
                 bufHeight = (mCropHeight + 1) & ~1;
                 break;
             }
+#endif
             case OMX_COLOR_Format24bitRGB888:
             {
                 halFormat = HAL_PIXEL_FORMAT_RGB_888;
@@ -154,6 +156,7 @@ void SoftwareRenderer::resetFormatIfChanged(
                 bufHeight = (mCropHeight + 1) & ~1;
                 break;
             }
+#if 0 // HACKED
             case OMX_COLOR_FormatYUV420Planar16:
             {
                 if (((dataSpace & HAL_DATASPACE_STANDARD_MASK) == HAL_DATASPACE_STANDARD_BT2020)
@@ -170,6 +173,7 @@ void SoftwareRenderer::resetFormatIfChanged(
                 bufHeight = (mCropHeight + 1) & ~1;
                 break;
             }
+#endif
             default:
             {
                 break;
